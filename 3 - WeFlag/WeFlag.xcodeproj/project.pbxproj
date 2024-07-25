@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010B72E32C52B29500EA56EA /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B72E22C52B29500EA56EA /* GameBrain.swift */; };
 		01B543C82C5166B400305AF4 /* WeFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B543C72C5166B400305AF4 /* WeFlagApp.swift */; };
-		01B543CA2C5166B400305AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B543C92C5166B400305AF4 /* ContentView.swift */; };
+		01B543CA2C5166B400305AF4 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B543C92C5166B400305AF4 /* QuestionView.swift */; };
 		01B543CC2C5166B700305AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B543CB2C5166B700305AF4 /* Assets.xcassets */; };
 		01B543CF2C5166B700305AF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B543CE2C5166B700305AF4 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010B72E22C52B29500EA56EA /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 		01B543C42C5166B400305AF4 /* WeFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B543C72C5166B400305AF4 /* WeFlagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeFlagApp.swift; sourceTree = "<group>"; };
-		01B543C92C5166B400305AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		01B543C92C5166B400305AF4 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		01B543CB2C5166B700305AF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01B543CE2C5166B700305AF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				01B543C72C5166B400305AF4 /* WeFlagApp.swift */,
-				01B543C92C5166B400305AF4 /* ContentView.swift */,
+				01B543C92C5166B400305AF4 /* QuestionView.swift */,
+				010B72E22C52B29500EA56EA /* GameBrain.swift */,
 				01B543CB2C5166B700305AF4 /* Assets.xcassets */,
 				01B543CD2C5166B700305AF4 /* Preview Content */,
 			);
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01B543CA2C5166B400305AF4 /* ContentView.swift in Sources */,
+				01B543CA2C5166B400305AF4 /* QuestionView.swift in Sources */,
+				010B72E32C52B29500EA56EA /* GameBrain.swift in Sources */,
 				01B543C82C5166B400305AF4 /* WeFlagApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

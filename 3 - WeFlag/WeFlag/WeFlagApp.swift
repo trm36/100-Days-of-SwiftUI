@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct WeFlagApp: App {
+    @State private var gameBrain = GameBrain()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if let question = gameBrain.nextQuestion() {
+                QuestionView()
+                    .environment(gameBrain)
+            } else {
+                Color.red // TODO: ** write error view.
+                    .ignoresSafeArea()
+            }
         }
     }
 }
