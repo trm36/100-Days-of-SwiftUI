@@ -15,6 +15,7 @@ struct QuestionView: View {
     @State private var currentQuestion: GameBrain.Question?
     @State private var showingScore = false
     @State private var scoreTitle: String = ""
+    @State private var guessedFlag: String = ""
     @State private var showingEndGame = false
     @State private var score: Int = 0
 
@@ -73,11 +74,12 @@ struct QuestionView: View {
                                 askQuestion()
                             }
                         } message: {
+                            Text("That's the flag of \(guessedFlag).")
                             Text("Your score is \(score)")
                         }
                         .alert("🏁 Game Complete", isPresented: $showingEndGame) {
                             Button("Play Again") {
-                                // TODO: - ADD PLAY AGAIN LOGIC
+                                newGame()
                             }
                         } message: {
                             Text("Your final score is \(score)")
@@ -98,7 +100,9 @@ struct QuestionView: View {
     private func flagTapped(_ number: Int) {
         guard let currentQuestion = currentQuestion else { return }
         let guess = currentQuestion.shuffledOptions[number]
+        guessedFlag = guess.displayString
         if guess == currentQuestion.correctAnswer {
+            score += 100
             scoreTitle = "Correct"
         } else {
             scoreTitle = "Wrong"
@@ -114,6 +118,14 @@ struct QuestionView: View {
         }
 
         currentQuestion = nextQuestion
+    }
+
+    private func newGame() {
+        score = 0
+        scoreTitle = ""
+        guessedFlag = ""
+        gameBrain.newGame()
+        currentQuestion = gameBrain.nextQuestion()
     }
 }
 

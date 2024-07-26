@@ -16,6 +16,10 @@ class GameBrain {
         return questions.popLast()
     }
 
+    func newGame() {
+        questions = Question.generateQuestionList()
+    }
+
     enum Country: String, CaseIterable {
         case estonia = "Estonia"
         case france = "France"
@@ -30,7 +34,14 @@ class GameBrain {
         case us = "US"
 
         var displayString: String {
-            return self.rawValue
+            switch self {
+            case .uk:
+                return "the UK"
+            case .us:
+                return "the US"
+            case .estonia, .france, .germany, .ireland, .italy, .nigeria, .poland, .spain, .ukraine:
+                return rawValue
+            }
         }
 
         var image: Image {
