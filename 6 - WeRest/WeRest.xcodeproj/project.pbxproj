@@ -12,6 +12,7 @@
 		01B30B9B2C57437F00A815E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B30B9A2C57437F00A815E3 /* Assets.xcassets */; };
 		01B30B9E2C57437F00A815E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B30B9D2C57437F00A815E3 /* Preview Assets.xcassets */; };
 		01B30BA52C5766A800A815E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B30BA42C5766A800A815E3 /* Extensions.swift */; };
+		01B30BAD2C58549400A815E3 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 01B30BAC2C58549400A815E3 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		01B30B9A2C57437F00A815E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01B30B9D2C57437F00A815E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01B30BA42C5766A800A815E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		01B30BAC2C58549400A815E3 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				01B30B982C57437E00A815E3 /* ContentView.swift */,
 				01B30BA42C5766A800A815E3 /* Extensions.swift */,
 				01B30B9A2C57437F00A815E3 /* Assets.xcassets */,
+				01B30BAC2C58549400A815E3 /* SleepCalculator.mlmodel */,
 				01B30B9C2C57437F00A815E3 /* Preview Content */,
 			);
 			path = WeRest;
@@ -142,6 +145,7 @@
 			files = (
 				01B30B992C57437E00A815E3 /* ContentView.swift in Sources */,
 				01B30BA52C5766A800A815E3 /* Extensions.swift in Sources */,
+				01B30BAD2C58549400A815E3 /* SleepCalculator.mlmodel in Sources */,
 				01B30B972C57437E00A815E3 /* WeRestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

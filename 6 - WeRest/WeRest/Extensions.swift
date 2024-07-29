@@ -13,7 +13,7 @@ extension Date {
     /// If there is an issue with the date components, this function will return Date.now
     static var eightAM: Date {
         let today = Date.now
-        var components = Calendar.current.dateComponents([.day, .month, .year], from: today)
+        var components = DateComponents()
         components.hour = 8
         components.minute = 0
         return Calendar.current.date(from: components) ?? today
