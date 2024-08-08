@@ -12,6 +12,9 @@ struct ContentView: View {
     @State private var usedWords: [String] = []
     @State private var rootWord: String = ""
     @State private var newWord: String = ""
+    @State private var score: Int = 0
+
+    @FocusState private var entryIsFocus
 
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
@@ -19,6 +22,8 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
+
+//            Text("FOO")
             List {
                 Section {
                     Text(rootWord.localizedUppercase)
@@ -33,6 +38,7 @@ struct ContentView: View {
                     TextField("Enter your word", text: $newWord)
                         .textInputAutocapitalization(.never)
                         .onSubmit(addNewWord)
+                        .focused($entryIsFocus)
                 }
 
                 Section {
@@ -45,15 +51,26 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationTitle("WeScramble")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("New Game", action: startGame)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Score: \(score)")
+                }
+            }
         }
         .onAppear(perform: startGame)
         .alert(errorTitle, isPresented: $showingError) {
             Button("OK") {
                 newWord = ""
+                entryIsFocus = true
             }
         } message: {
             Text(errorMessage)
         }
+
     }
 
     private func startGame() {
@@ -61,11 +78,19 @@ struct ContentView: View {
         guard let allWords = try? String(contentsOf: file) else { fatalError() }
         let separatedWords = allWords.components(separatedBy: .newlines)
         rootWord = separatedWords.randomElement() ?? "SILKWORM"
+        usedWords = []
+        newWord = ""
+        score = 0
     }
 
     private func addNewWord() {
         let trimmedWord = newWord.lowercased().filter { !($0.isWhitespace) }
         guard trimmedWord.count != 0 else { return }
+
+        guard isLongEnough(word: trimmedWord) else {
+            wordError(title: "Word Too Short", message: "Words must be at least three letters.")
+            return
+        }
 
         guard isOriginal(word: trimmedWord) else {
             wordError(title: "Word Used Already", message: "Be more original.")
@@ -82,11 +107,18 @@ struct ContentView: View {
             return
         }
 
+        guard !isBeginingOfRootWord(word: trimmedWord) else {
+            wordError(title: "Start Of Word Not Possible", message: "You can't answer with the start of the root word.")
+            return
+        }
+
         withAnimation {
+            score += trimmedWord.count + usedWords.count
             usedWords.insert(trimmedWord, at: 0)
         }
 
         newWord = ""
+        entryIsFocus = true
     }
 
     private func wordError(title: String, message: String) {
@@ -96,6 +128,10 @@ struct ContentView: View {
     }
 
     // MARK: - WORD VALIDATION METHODS
+    private func isLongEnough(word: String) -> Bool {
+        return word.count >= 3
+    }
+
     private func isOriginal(word: String) -> Bool {
         return !usedWords.contains(word)
     }
@@ -117,6 +153,10 @@ struct ContentView: View {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
 
         return misspelledRange.location == NSNotFound
+    }
+
+    private func isBeginingOfRootWord(word: String) -> Bool {
+        return rootWord.starts(with: word)
     }
 }
 
