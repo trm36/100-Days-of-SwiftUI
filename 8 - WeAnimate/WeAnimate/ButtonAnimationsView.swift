@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ButtonAnimationsView.swift
 //  WeAnimate
 //
 //  Created by Taylor on 2024-08-08.
@@ -7,12 +7,15 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ButtonAnimationsView: View {
 
     @State private var animationAmountRed = 1.0
     @State private var animationAmountBlue = 1.0
     @State private var animationAmountGreen = 1.0
     @State private var animationAmountOrange = 0.0
+    @State private var animationAmountPurple = false
+
+    @State private var enabled = false
 
     var body: some View {
         print("Red: \(animationAmountRed)")
@@ -96,10 +99,22 @@ struct ContentView: View {
             )
 
             Spacer()
+
+            Button("Tap Me") {
+                enabled.toggle()
+            }
+            .padding(50)
+            .background(enabled ? .purple : .pink)
+            .foregroundStyle(.white)
+            .animation(nil, value: enabled)
+            .clipShape(.rect(cornerRadius: enabled ? 60 : 10))
+            .animation(.spring(duration: 1.0, bounce: 0.6), value: enabled)
+
+            Spacer()
         }
     }
 }
 
 #Preview {
-    ContentView()
+    ButtonAnimationsView()
 }
