@@ -19,10 +19,19 @@ struct QuestionView: View {
     @State private var showingEndGame = false
     @State private var score: Int = 0
 
-    var body: some View {
+    @State private var flagButtonAnimationAmountA: Double = 0.0
+    @State private var flagButtonAnimationAmountB: Double = 0.0
+    @State private var flagButtonAnimationAmountC: Double = 0.0
 
-        if let currentQuestion = currentQuestion {
-            GeometryReader { geometry in
+    var body: some View {
+        GeometryReader { geometry in
+            var flagButtonAnimationAmounts = [
+                flagButtonAnimationAmountA,
+                flagButtonAnimationAmountB,
+                flagButtonAnimationAmountC,
+            ]
+
+            if let currentQuestion = currentQuestion {
                 ZStack {
                     RadialGradient(stops: [
                         .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
@@ -54,14 +63,13 @@ struct QuestionView: View {
                                 Text(currentQuestion.correctAnswer.displayString.uppercased())
                                     .font(.largeTitle.weight(.heavy))
                             }
-
+                            
                             ForEach(0..<3) { i in
-                                Button {
+                                let country = currentQuestion.shuffledOptions[i]
+                                let isCorrectAnswer = country == currentQuestion.correctAnswer
+
+                                FlagButton(country: country, isCorrectAnswer: isCorrectAnswer) {
                                     flagTapped(i)
-                                } label: {
-                                    currentQuestion.shuffledOptions[i].image
-                                        .clipShape(.capsule)
-                                        .shadow(radius: 5)
                                 }
                             }
                         }
@@ -87,13 +95,13 @@ struct QuestionView: View {
                     }
                     .padding()
                 }
+            } else {
+                Color.red
+                    .ignoresSafeArea()
+                    .onAppear {
+                        askQuestion()
+                    }
             }
-        } else {
-            Color.red
-                .ignoresSafeArea()
-                .onAppear {
-                    askQuestion()
-                }
         }
     }
 

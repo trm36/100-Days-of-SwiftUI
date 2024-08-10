@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010B72E32C52B29500EA56EA /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B72E22C52B29500EA56EA /* GameBrain.swift */; };
+		0131421A2C6757E500F90CCD /* FlagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013142192C6757E500F90CCD /* FlagButton.swift */; };
 		01B543C82C5166B400305AF4 /* WeFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B543C72C5166B400305AF4 /* WeFlagApp.swift */; };
 		01B543CA2C5166B400305AF4 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B543C92C5166B400305AF4 /* QuestionView.swift */; };
 		01B543CC2C5166B700305AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B543CB2C5166B700305AF4 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		010B72E22C52B29500EA56EA /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
+		013142192C6757E500F90CCD /* FlagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagButton.swift; sourceTree = "<group>"; };
 		01B543C42C5166B400305AF4 /* WeFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B543C72C5166B400305AF4 /* WeFlagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeFlagApp.swift; sourceTree = "<group>"; };
 		01B543C92C5166B400305AF4 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				01B543C72C5166B400305AF4 /* WeFlagApp.swift */,
 				01B543C92C5166B400305AF4 /* QuestionView.swift */,
+				013142192C6757E500F90CCD /* FlagButton.swift */,
 				010B72E22C52B29500EA56EA /* GameBrain.swift */,
 				01B543CB2C5166B700305AF4 /* Assets.xcassets */,
 				01B543CD2C5166B700305AF4 /* Preview Content */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B543CA2C5166B400305AF4 /* QuestionView.swift in Sources */,
+				0131421A2C6757E500F90CCD /* FlagButton.swift in Sources */,
 				010B72E32C52B29500EA56EA /* GameBrain.swift in Sources */,
 				01B543C82C5166B400305AF4 /* WeFlagApp.swift in Sources */,
 			);
