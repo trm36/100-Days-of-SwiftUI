@@ -11,7 +11,7 @@ import SwiftUI
 struct WeMoonApp: App {
     var body: some Scene {
         WindowGroup {
-            LessonView()
+            ContentView()
         }
     }
 }
