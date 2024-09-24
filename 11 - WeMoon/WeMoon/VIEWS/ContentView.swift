@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let astronauts: [String : Astronaut] = Bundle.main.decode("astronauts.json")
-    let missions: [Mission] = Bundle.main.decode("missions.json")
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -20,7 +17,8 @@ struct ContentView: View {
                 ]
 
                 LazyVGrid(columns: columns) {
-                    ForEach(missions) { mission in
+                    let dataController = DataController.shared
+                    ForEach(dataController.missionsResolved) { mission in
                         NavigationLink {
                             MissonDetailView(mission: mission)
                         } label: {

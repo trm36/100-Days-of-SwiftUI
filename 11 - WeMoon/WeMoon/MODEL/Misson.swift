@@ -13,6 +13,18 @@ struct Mission: Codable, Identifiable {
     var description: String
     var crew: [CrewMember]
 
+    struct CrewMember: Codable {
+        var name: String
+        var role: String
+    }
+}
+
+struct MissionResolved: Identifiable {
+    var id: Int
+    var launchDate: Date?
+    var description: String
+    var crew: [CrewMember]
+
     var launchDateString: String {
         return launchDate?.formatted(date: .abbreviated, time: .omitted) ?? "DNL"
     }
@@ -25,10 +37,11 @@ struct Mission: Codable, Identifiable {
         return "apollo\(id)"
     }
 
-
-    struct CrewMember: Codable {
-    //    var astronaut: Astronaut
-        var name: String
+    struct CrewMember: Identifiable {
+        var id: String {
+            return astronaut.id
+        }
+        var astronaut: Astronaut
         var role: String
     }
 }

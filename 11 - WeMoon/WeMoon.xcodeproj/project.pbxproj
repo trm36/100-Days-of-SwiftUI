@@ -16,10 +16,12 @@
 		01867E292CA116AE0050B100 /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = 01867E282CA116AE0050B100 /* astronauts.json */; };
 		01867E2B2CA11C670050B100 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E2A2CA11C670050B100 /* Astronaut.swift */; };
 		01867E2D2CA11C8E0050B100 /* Misson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E2C2CA11C8E0050B100 /* Misson.swift */; };
-		01867E2F2CA11E6F0050B100 /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E2E2CA11E6F0050B100 /* CrewMember.swift */; };
 		01867E332CA11FA90050B100 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E322CA11FA90050B100 /* Bundle-Decodable.swift */; };
 		01867E352CA1E8490050B100 /* MissonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E342CA1E8490050B100 /* MissonDetailView.swift */; };
 		01867E372CA1F0FF0050B100 /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E362CA1F0FF0050B100 /* Color-Theme.swift */; };
+		01867E392CA214DB0050B100 /* VHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E382CA214DB0050B100 /* VHeaderView.swift */; };
+		01867E3B2CA264D00050B100 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E3A2CA264D00050B100 /* DataController.swift */; };
+		01867E3F2CA2A68F0050B100 /* AstronautDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +35,12 @@
 		01867E282CA116AE0050B100 /* astronauts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
 		01867E2A2CA11C670050B100 /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		01867E2C2CA11C8E0050B100 /* Misson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misson.swift; sourceTree = "<group>"; };
-		01867E2E2CA11E6F0050B100 /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
 		01867E322CA11FA90050B100 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		01867E342CA1E8490050B100 /* MissonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissonDetailView.swift; sourceTree = "<group>"; };
 		01867E362CA1F0FF0050B100 /* Color-Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Theme.swift"; sourceTree = "<group>"; };
+		01867E382CA214DB0050B100 /* VHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHeaderView.swift; sourceTree = "<group>"; };
+		01867E3A2CA264D00050B100 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				0177D3C32C9FE15600F98235 /* WeMoonApp.swift */,
-				01867E242CA116680050B100 /* ContentView.swift */,
-				01867E342CA1E8490050B100 /* MissonDetailView.swift */,
-				0177D3C52C9FE15600F98235 /* LessonView.swift */,
+				01867E3C2CA264D80050B100 /* VIEWS */,
+				01867E3D2CA264E20050B100 /* DATA CONTROLLERS */,
 				01867E302CA11E800050B100 /* MODEL */,
 				01867E312CA11E8E0050B100 /* ASSETS */,
 				0177D3C92C9FE15700F98235 /* Preview Content */,
@@ -94,7 +97,6 @@
 				01867E322CA11FA90050B100 /* Bundle-Decodable.swift */,
 				01867E2A2CA11C670050B100 /* Astronaut.swift */,
 				01867E2C2CA11C8E0050B100 /* Misson.swift */,
-				01867E2E2CA11E6F0050B100 /* CrewMember.swift */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -108,6 +110,26 @@
 				01867E282CA116AE0050B100 /* astronauts.json */,
 			);
 			path = ASSETS;
+			sourceTree = "<group>";
+		};
+		01867E3C2CA264D80050B100 /* VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				01867E242CA116680050B100 /* ContentView.swift */,
+				01867E342CA1E8490050B100 /* MissonDetailView.swift */,
+				01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */,
+				01867E382CA214DB0050B100 /* VHeaderView.swift */,
+				0177D3C52C9FE15600F98235 /* LessonView.swift */,
+			);
+			path = VIEWS;
+			sourceTree = "<group>";
+		};
+		01867E3D2CA264E20050B100 /* DATA CONTROLLERS */ = {
+			isa = PBXGroup;
+			children = (
+				01867E3A2CA264D00050B100 /* DataController.swift */,
+			);
+			path = "DATA CONTROLLERS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,10 +206,12 @@
 			files = (
 				01867E352CA1E8490050B100 /* MissonDetailView.swift in Sources */,
 				01867E2D2CA11C8E0050B100 /* Misson.swift in Sources */,
+				01867E3F2CA2A68F0050B100 /* AstronautDetailView.swift in Sources */,
 				0177D3C62C9FE15600F98235 /* LessonView.swift in Sources */,
 				0177D3C42C9FE15600F98235 /* WeMoonApp.swift in Sources */,
 				01867E252CA116680050B100 /* ContentView.swift in Sources */,
-				01867E2F2CA11E6F0050B100 /* CrewMember.swift in Sources */,
+				01867E3B2CA264D00050B100 /* DataController.swift in Sources */,
+				01867E392CA214DB0050B100 /* VHeaderView.swift in Sources */,
 				01867E332CA11FA90050B100 /* Bundle-Decodable.swift in Sources */,
 				01867E372CA1F0FF0050B100 /* Color-Theme.swift in Sources */,
 				01867E2B2CA11C670050B100 /* Astronaut.swift in Sources */,
