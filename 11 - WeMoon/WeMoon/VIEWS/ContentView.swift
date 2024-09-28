@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State private var path = NavigationPath()
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 let columns = [
                     GridItem(.adaptive(minimum: 150.0)),
@@ -18,35 +20,17 @@ struct ContentView: View {
 
                 LazyVGrid(columns: columns) {
                     let dataController = DataController.shared
-                    ForEach(dataController.missionsResolved) { mission in
-                        NavigationLink {
-                            MissonDetailView(mission: mission)
-                        } label: {
-                            VStack {
-                                Image(mission.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150.0, height: 150.0)
-                                    .padding(.vertical)
-                                VStack {
-                                    Text(mission.displayName)
-                                        .font(.headline)
-                                        .foregroundStyle(.white)
-                                    Text(mission.launchDateString)
-                                        .font(.caption)
-                                        .foregroundStyle(.white.opacity(0.5))
-                                }
-                                .padding(.vertical)
-                                .frame(maxWidth: .infinity)
-                                .background(.lightBackground)
-                            }
-                            .clipShape(.rect(cornerRadius: 10.0))
-                            .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(.lightBackground))
+                    ForEach(dataController.missionsResolved, id: \.self) { mission in
+                        NavigationLink(value: mission) {
+                            MissonCell(mission: mission)
                         }
                     }
                 }
                 .padding(.horizontal)
                 .navigationTitle("Missions")
+                .navigationDestination(for: MissionResolved.self) { mission in
+                    MissonDetailView(mission: mission)
+                }
             }
             .background(.darkBackground)
             .preferredColorScheme(.dark)

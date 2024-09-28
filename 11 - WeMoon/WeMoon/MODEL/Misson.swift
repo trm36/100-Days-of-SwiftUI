@@ -19,7 +19,7 @@ struct Mission: Codable, Identifiable {
     }
 }
 
-struct MissionResolved: Identifiable {
+struct MissionResolved: Identifiable, Hashable {
     var id: Int
     var launchDate: Date?
     var description: String
@@ -37,11 +37,21 @@ struct MissionResolved: Identifiable {
         return "apollo\(id)"
     }
 
-    struct CrewMember: Identifiable {
+    // MARK: - EQUATABLE
+    static func == (lhs: MissionResolved, rhs: MissionResolved) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    struct CrewMember: Identifiable, Hashable {
         var id: String {
             return astronaut.id
         }
         var astronaut: Astronaut
         var role: String
+
+        // MARK: - EQUATABLE
+        static func == (lhs: CrewMember, rhs: CrewMember) -> Bool {
+            return lhs.id == rhs.id
+        }
     }
 }

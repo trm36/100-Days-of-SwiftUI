@@ -22,6 +22,7 @@
 		01867E392CA214DB0050B100 /* VHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E382CA214DB0050B100 /* VHeaderView.swift */; };
 		01867E3B2CA264D00050B100 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E3A2CA264D00050B100 /* DataController.swift */; };
 		01867E3F2CA2A68F0050B100 /* AstronautDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */; };
+		01BB22A72CA8710F00A971B1 /* MissonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BB22A62CA8710F00A971B1 /* MissonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		01867E382CA214DB0050B100 /* VHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHeaderView.swift; sourceTree = "<group>"; };
 		01867E3A2CA264D00050B100 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautDetailView.swift; sourceTree = "<group>"; };
+		01BB22A62CA8710F00A971B1 /* MissonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				01867E242CA116680050B100 /* ContentView.swift */,
+				01BB22A62CA8710F00A971B1 /* MissonCell.swift */,
 				01867E342CA1E8490050B100 /* MissonDetailView.swift */,
 				01867E3E2CA2A68F0050B100 /* AstronautDetailView.swift */,
 				01867E382CA214DB0050B100 /* VHeaderView.swift */,
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01BB22A72CA8710F00A971B1 /* MissonCell.swift in Sources */,
 				01867E352CA1E8490050B100 /* MissonDetailView.swift in Sources */,
 				01867E2D2CA11C8E0050B100 /* Misson.swift in Sources */,
 				01867E3F2CA2A68F0050B100 /* AstronautDetailView.swift in Sources */,

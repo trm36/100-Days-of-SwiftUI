@@ -57,8 +57,8 @@
 			children = (
 				01BB22942CA504A400A971B1 /* WeNavigateApp.swift */,
 				01BB22962CA504A400A971B1 /* ContentView.swift */,
-				01BB22A42CA7D6CA00A971B1 /* PathStore.swift */,
 				01BB22A22CA505F700A971B1 /* DetailView.swift */,
+				01BB22A42CA7D6CA00A971B1 /* PathStore.swift */,
 				01BB22982CA504A500A971B1 /* Assets.xcassets */,
 				01BB229A2CA504A500A971B1 /* Preview Content */,
 			);

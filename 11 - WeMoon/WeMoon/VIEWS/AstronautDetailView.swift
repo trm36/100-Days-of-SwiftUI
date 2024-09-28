@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AstronautDetailView: View {
     let astronaut: Astronaut
-    
+
     var body: some View {
-        NavigationStack {
+
             ScrollView {
                 VStack {
                     Image(astronaut.imageName)
@@ -25,11 +25,12 @@ struct AstronautDetailView: View {
             .background(.darkBackground)
             .navigationTitle(astronaut.name)
         }
-    }
 }
 
 #Preview {
     let astronaut = DataController.shared.astronauts.first!
-    return AstronautDetailView(astronaut: astronaut.value)
-        .preferredColorScheme(.dark)
+    return NavigationStack {
+        AstronautDetailView(astronaut: astronaut.value)
+            .preferredColorScheme(.dark)
+    }
 }
