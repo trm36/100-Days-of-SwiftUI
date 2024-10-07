@@ -54,7 +54,6 @@ struct ContentView: View {
                 }
 
                 Section() {
-
                     Toggle(isOn: $selectedSpecialRequests) {
                         Text("Special Requests")
                     }
@@ -72,8 +71,18 @@ struct ContentView: View {
                 }
 
                 Section() {
-                    NavigationLink("Delivery Details") {
-                        AddressView(order: order)
+                    NavigationLink(destination: AddressView(order: order)) {
+                        HStack {
+                            Text("Delivery Details")
+
+                            Spacer()
+
+                            if order.deliveryAddress.isValidAddress {
+                                Text(order.deliveryAddress.street)
+                                    .lineLimit(1)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     }
                 }
 
@@ -86,6 +95,13 @@ struct ContentView: View {
                         Text("\(order.total.formatted(.currency(code: "USD")))")
                             .multilineTextAlignment(.trailing)
                     }
+                }
+
+                Section() {
+                    NavigationLink("Checkout") {
+                        CheckoutView(order: order)
+                    }
+                    .disabled(!order.deliveryAddress.isValidAddress)
                 }
 
             }

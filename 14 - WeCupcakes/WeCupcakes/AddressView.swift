@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct AddressView: View {
-    var order: Order
+    @Bindable var order: Order
 
     var body: some View {
-        Text(order.cakeOption.displayString)
-            .navigationTitle("Address View")
+        Form {
+            TextField("Name", text: $order.deliveryAddress.name)
+            TextField("Street", text: $order.deliveryAddress.street)
+            TextField("City", text: $order.deliveryAddress.city)
+            TextField("Zip", text: $order.deliveryAddress.zip)
+        }
+        .navigationTitle("Delivery Details")
     }
 }
 
