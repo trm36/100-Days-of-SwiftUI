@@ -16,6 +16,7 @@
 		017D91822CB30A6900617B77 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91812CB30A6900617B77 /* AddressView.swift */; };
 		017D91852CB30D7E00617B77 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91842CB30D7E00617B77 /* Address.swift */; };
 		017D91872CB310DD00617B77 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91862CB310DD00617B77 /* CheckoutView.swift */; };
+		017D91892CB3745300617B77 /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91882CB3745300617B77 /* AddressController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		017D91812CB30A6900617B77 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		017D91842CB30D7E00617B77 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		017D91862CB310DD00617B77 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		017D91882CB3745300617B77 /* AddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				017D917D2CB2F91900617B77 /* Order.swift */,
 				017D91842CB30D7E00617B77 /* Address.swift */,
+				017D91882CB3745300617B77 /* AddressController.swift */,
 				017D917F2CB2F95900617B77 /* Cupcake.swift */,
 			);
 			path = MODEL;
@@ -164,6 +167,7 @@
 				017D91802CB2F95900617B77 /* Cupcake.swift in Sources */,
 				017D917E2CB2F91900617B77 /* Order.swift in Sources */,
 				017D91872CB310DD00617B77 /* CheckoutView.swift in Sources */,
+				017D91892CB3745300617B77 /* AddressController.swift in Sources */,
 				017D91722CB2F71900617B77 /* ContentView.swift in Sources */,
 				017D91702CB2F71900617B77 /* WeCupcakesApp.swift in Sources */,
 				017D91822CB30A6900617B77 /* AddressView.swift in Sources */,

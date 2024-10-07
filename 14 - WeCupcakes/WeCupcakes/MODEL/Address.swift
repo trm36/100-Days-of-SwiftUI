@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct Address: Codable {
-    var name: String = "Taylor"
-    var street: String = "123 Main St."
-    var city: String = "Anytown"
-    var zip: String = "00000"
+struct Address: Codable, Hashable {
+    var name: String = ""
+    var street: String = ""
+    var city: String = ""
+    var zip: String = ""
 
     var isValidAddress: Bool {
-        return !(name.isEmpty || street.isEmpty || city.isEmpty || zip.isEmpty)
+        let nameTrim = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let streetTrim = street.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cityTrim = city.trimmingCharacters(in: .whitespacesAndNewlines)
+        let zipTrim = zip.trimmingCharacters(in: .whitespacesAndNewlines)
+        return !(nameTrim.isEmpty || streetTrim.isEmpty || cityTrim.isEmpty || zipTrim.isEmpty)
     }
 }

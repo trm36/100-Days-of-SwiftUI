@@ -8,7 +8,6 @@
 import Foundation
 
 struct Cupcake {
-
     static let cakePrice: Decimal = 3.25
     static let extraFrostingPrice: Decimal = 1.25
     static let sprinklePrice: Decimal = 0.25

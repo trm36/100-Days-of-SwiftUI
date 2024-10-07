@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var order = Order(cakeOption: .chocolate, quantity: 12, extraFrosting: false, addSprinkles: false)
-
+    
+    @State private var order = Order(cakeOption: .chocolate, quantity: 6, extraFrosting: false, addSprinkles: false)
     @State private var selectedSpecialRequests: Bool = false
 
     var body: some View {
-
         NavigationStack {
             Form {
+                // MARK: - CAKE OPTIONS
                 Section("Cake Options") {
                     Picker("Cake Option", selection: $order.cakeOption) {
                         ForEach(Cupcake.CakeOption.allCases) { cakeOption in
@@ -33,6 +33,7 @@ struct ContentView: View {
                     }
                 }
 
+                // MARK: - ADDITIONS
                 Section("Additions") {
                     Toggle(isOn: $order.extraFrosting) {
                         VStack(alignment: .leading) {
@@ -53,7 +54,8 @@ struct ContentView: View {
                     }
                 }
 
-                Section() {
+                // MARK: - SPECIAL REQUESTS
+                Section {
                     Toggle(isOn: $selectedSpecialRequests) {
                         Text("Special Requests")
                     }
@@ -70,7 +72,8 @@ struct ContentView: View {
                     }
                 }
 
-                Section() {
+                // MARK: - DELIVERY DETAILS
+                Section {
                     NavigationLink(destination: AddressView(order: order)) {
                         HStack {
                             Text("Delivery Details")
@@ -81,12 +84,17 @@ struct ContentView: View {
                                 Text(order.deliveryAddress.street)
                                     .lineLimit(1)
                                     .foregroundStyle(.secondary)
+                            } else {
+                                Image(systemName: "questionmark.app.dashed")
+                                    .font(.title2)
+                                    .foregroundStyle(.secondary)
                             }
                         }
                     }
                 }
 
-                Section() {
+                // MARK: - TOTAL
+                Section {
                     HStack {
                         Text("TOTAL")
                             .font(.subheadline)
@@ -97,13 +105,13 @@ struct ContentView: View {
                     }
                 }
 
-                Section() {
+                // MARK: - CHECKOUT
+                Section {
                     NavigationLink("Checkout") {
                         CheckoutView(order: order)
                     }
                     .disabled(!order.deliveryAddress.isValidAddress)
                 }
-
             }
             .navigationTitle("Cupcake Corner")
         }

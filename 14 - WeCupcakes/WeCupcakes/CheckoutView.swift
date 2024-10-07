@@ -14,13 +14,18 @@ struct CheckoutView: View {
 
 
     // MARK: - ALERT PROPERTIES
-    // ERRO MESSAGE
+    // ERROR MESSAGE
     @State private var showingErrorAlert: Bool = false
     @State private var errorMessageString: String = ""
     // CONFIRMATION MESSAGE
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
 
+
+    // MARK: - ENVIRONMENT PROPERTIES
+    @Environment(\.dismiss) var dismiss
+
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -50,7 +55,10 @@ struct CheckoutView: View {
                     Text(errorMessageString)
                 }
                 .alert("Thank you!", isPresented: $showingConfirmation) {
-                    Button("OK") { }
+                    Button("OK") { 
+                        order.reset()
+                        dismiss()
+                    }
                 } message: {
                     Text(confirmationMessage)
                 }
@@ -72,6 +80,8 @@ struct CheckoutView: View {
             showingErrorAlert = true
             return
         }
+
+        AddressController.shared.addAddress(order.deliveryAddress)
 
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

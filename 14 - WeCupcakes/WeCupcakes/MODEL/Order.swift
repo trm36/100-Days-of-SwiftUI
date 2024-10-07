@@ -16,7 +16,6 @@ class Order: Codable {
     var addSprinkles: Bool
     var deliveryAddress: Address
 
-
     init(cakeOption: Cupcake.CakeOption, quantity: Int, specialRequest: String? = nil, extraFrosting: Bool, addSprinkles: Bool, deliveryAddress: Address = Address()) {
         self.cakeOption = cakeOption
         self.quantity = quantity
@@ -42,6 +41,15 @@ class Order: Codable {
         }
 
         return total
+    }
+
+    func reset() {
+        cakeOption = .chocolate
+        quantity = 6
+        specialRequest = ""
+        extraFrosting = false
+        addSprinkles = false
+        deliveryAddress = Address()
     }
 
     enum CodingKeys: String, CodingKey {
