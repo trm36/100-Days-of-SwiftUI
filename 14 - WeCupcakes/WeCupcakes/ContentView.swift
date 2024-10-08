@@ -68,7 +68,7 @@ struct ContentView: View {
                     }
 
                     if selectedSpecialRequests {
-                        TextField("Requests", text: $order.specialRequest)
+                        TextField("Requests", text: $order.specialRequest, axis: .vertical)
                     }
                 }
 
