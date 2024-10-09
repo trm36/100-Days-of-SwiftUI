@@ -15,6 +15,11 @@
 		017D91A72CB4AB3C00617B77 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91A62CB4AB3C00617B77 /* TextFieldView.swift */; };
 		017D91A92CB4AD2300617B77 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91A82CB4AD2300617B77 /* Student.swift */; };
 		017D91AB2CB4AE9900617B77 /* SwiftDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91AA2CB4AE9900617B77 /* SwiftDataView.swift */; };
+		017D91AE2CB63C2A00617B77 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91AD2CB63C2A00617B77 /* ContentView.swift */; };
+		017D91B02CB63C5D00617B77 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91AF2CB63C5D00617B77 /* Book.swift */; };
+		017D91B22CB63D3900617B77 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B12CB63D3900617B77 /* AddBookView.swift */; };
+		017D91B42CB706F500617B77 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B32CB706F500617B77 /* RatingView.swift */; };
+		017D91B62CB70C8200617B77 /* EmojiRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B52CB70C8200617B77 /* EmojiRankView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		017D91A62CB4AB3C00617B77 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		017D91A82CB4AD2300617B77 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		017D91AA2CB4AE9900617B77 /* SwiftDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataView.swift; sourceTree = "<group>"; };
+		017D91AD2CB63C2A00617B77 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		017D91AF2CB63C5D00617B77 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		017D91B12CB63D3900617B77 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		017D91B32CB706F500617B77 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		017D91B52CB70C8200617B77 /* EmojiRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +69,7 @@
 		017D91952CB4957000617B77 /* WeBook */ = {
 			isa = PBXGroup;
 			children = (
-				017D91962CB4957000617B77 /* WeBookApp.swift */,
+				017D91B92CB70CA800617B77 /* PROJECT */,
 				017D91AC2CB4AFD100617B77 /* LESSON */,
 				017D919A2CB4957100617B77 /* Assets.xcassets */,
 				017D919C2CB4957100617B77 /* Preview Content */,
@@ -85,6 +95,43 @@
 				017D91A82CB4AD2300617B77 /* Student.swift */,
 			);
 			path = LESSON;
+			sourceTree = "<group>";
+		};
+		017D91B72CB70C8B00617B77 /* HELPER VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				017D91B32CB706F500617B77 /* RatingView.swift */,
+				017D91B52CB70C8200617B77 /* EmojiRankView.swift */,
+			);
+			path = "HELPER VIEWS";
+			sourceTree = "<group>";
+		};
+		017D91B82CB70C9300617B77 /* MODEL */ = {
+			isa = PBXGroup;
+			children = (
+				017D91AF2CB63C5D00617B77 /* Book.swift */,
+			);
+			path = MODEL;
+			sourceTree = "<group>";
+		};
+		017D91B92CB70CA800617B77 /* PROJECT */ = {
+			isa = PBXGroup;
+			children = (
+				017D91962CB4957000617B77 /* WeBookApp.swift */,
+				017D91BA2CB70D0C00617B77 /* VIEWS */,
+				017D91B82CB70C9300617B77 /* MODEL */,
+			);
+			path = PROJECT;
+			sourceTree = "<group>";
+		};
+		017D91BA2CB70D0C00617B77 /* VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				017D91AD2CB63C2A00617B77 /* ContentView.swift */,
+				017D91B12CB63D3900617B77 /* AddBookView.swift */,
+				017D91B72CB70C8B00617B77 /* HELPER VIEWS */,
+			);
+			path = VIEWS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +204,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017D91B02CB63C5D00617B77 /* Book.swift in Sources */,
+				017D91B22CB63D3900617B77 /* AddBookView.swift in Sources */,
 				017D91AB2CB4AE9900617B77 /* SwiftDataView.swift in Sources */,
+				017D91B62CB70C8200617B77 /* EmojiRankView.swift in Sources */,
+				017D91B42CB706F500617B77 /* RatingView.swift in Sources */,
 				017D91A52CB4AAA300617B77 /* TextEditorView.swift in Sources */,
+				017D91AE2CB63C2A00617B77 /* ContentView.swift in Sources */,
 				017D91992CB4957000617B77 /* BindingView.swift in Sources */,
 				017D91A72CB4AB3C00617B77 /* TextFieldView.swift in Sources */,
 				017D91A92CB4AD2300617B77 /* Student.swift in Sources */,

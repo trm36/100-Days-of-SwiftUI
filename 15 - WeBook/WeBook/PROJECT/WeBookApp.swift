@@ -12,8 +12,9 @@ import SwiftUI
 struct WeBookApp: App {
     var body: some Scene {
         WindowGroup {
-            SwiftDataView()
+            ContentView()
         }
-        .modelContainer(for: Student.self)
+        .modelContainer(for: Book.self)
+//        .modelContainer(for: Student.self) - LESSON
     }
 }
