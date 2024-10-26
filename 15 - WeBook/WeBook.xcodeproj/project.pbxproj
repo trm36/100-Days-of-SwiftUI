@@ -20,6 +20,7 @@
 		017D91B22CB63D3900617B77 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B12CB63D3900617B77 /* AddBookView.swift */; };
 		017D91B42CB706F500617B77 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B32CB706F500617B77 /* RatingView.swift */; };
 		017D91B62CB70C8200617B77 /* EmojiRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D91B52CB70C8200617B77 /* EmojiRankView.swift */; };
+		01DCB0222CC9FF490086A6CC /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DCB0212CC9FF490086A6CC /* BookDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		017D91B12CB63D3900617B77 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		017D91B32CB706F500617B77 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		017D91B52CB70C8200617B77 /* EmojiRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRankView.swift; sourceTree = "<group>"; };
+		01DCB0212CC9FF490086A6CC /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				017D91AD2CB63C2A00617B77 /* ContentView.swift */,
 				017D91B12CB63D3900617B77 /* AddBookView.swift */,
 				017D91B72CB70C8B00617B77 /* HELPER VIEWS */,
+				01DCB0212CC9FF490086A6CC /* BookDetail.swift */,
 			);
 			path = VIEWS;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				017D91AB2CB4AE9900617B77 /* SwiftDataView.swift in Sources */,
 				017D91B62CB70C8200617B77 /* EmojiRankView.swift in Sources */,
 				017D91B42CB706F500617B77 /* RatingView.swift in Sources */,
+				01DCB0222CC9FF490086A6CC /* BookDetail.swift in Sources */,
 				017D91A52CB4AAA300617B77 /* TextEditorView.swift in Sources */,
 				017D91AE2CB63C2A00617B77 /* ContentView.swift in Sources */,
 				017D91992CB4957000617B77 /* BindingView.swift in Sources */,

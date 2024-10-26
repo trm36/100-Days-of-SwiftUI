@@ -24,10 +24,9 @@ struct RatingView: View {
         HStack {
             if !label.isEmpty {
                 Text(label)
+                Spacer()
             }
-
-            Spacer()
-
+            
             // \.self gets rid of warning
             ForEach(1..<maximumRating + 1, id: \.self) { i in
                 Button {

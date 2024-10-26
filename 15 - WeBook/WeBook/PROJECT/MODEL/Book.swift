@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 class Book {
@@ -29,6 +30,10 @@ class Book {
         self.genre = genre
         self.review = review
         self.rating = rating
+    }
+    
+    static func testBook() -> Book {
+        return Book(title: "Harry Potter", author: "David Rose", genre: .fantasy, review: "This is an amazing book.", rating: 4)
     }
 
     enum Genre: String, Identifiable, CaseIterable, Codable {
@@ -60,6 +65,25 @@ class Book {
                 return "Romance"
             case .thriller:
                 return "Thriller"
+            }
+        }
+        
+        var image: Image {
+            switch self {
+            case .childrens:
+                return Image("Childrens")
+            case .fantasy:
+                return Image("Fantasy")
+            case .horror:
+                return Image("Horror")
+            case .mystery:
+                return Image("Mystery")
+            case .poetry:
+                return Image("Poetry")
+            case .romance:
+                return Image("Romance")
+            case .thriller:
+                return Image("Thriller")
             }
         }
     }
