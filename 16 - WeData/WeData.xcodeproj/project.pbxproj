@@ -12,6 +12,8 @@
 		01764EB72CD5E8FB00F64E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01764EB62CD5E8FB00F64E85 /* Assets.xcassets */; };
 		01764EBA2CD5E8FB00F64E85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01764EB92CD5E8FB00F64E85 /* Preview Assets.xcassets */; };
 		01764EC12CD6984600F64E85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01764EC02CD6984600F64E85 /* User.swift */; };
+		01764EC42CD6A66400F64E85 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01764EC32CD6A66400F64E85 /* UsersView.swift */; };
+		01764EC72CD6B57700F64E85 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01764EC62CD6B57700F64E85 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		01764EB62CD5E8FB00F64E85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01764EB92CD5E8FB00F64E85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01764EC02CD6984600F64E85 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		01764EC32CD6A66400F64E85 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		01764EC62CD6B57700F64E85 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				01764EB22CD5E8F900F64E85 /* WeDataApp.swift */,
-				01764EB42CD5E8F900F64E85 /* ContentView.swift */,
+				01764EC52CD6A66800F64E85 /* VIEWS */,
 				01764EC22CD698D400F64E85 /* MODEL */,
 				01764EB62CD5E8FB00F64E85 /* Assets.xcassets */,
 				01764EB82CD5E8FB00F64E85 /* Preview Content */,
@@ -74,8 +78,18 @@
 			isa = PBXGroup;
 			children = (
 				01764EC02CD6984600F64E85 /* User.swift */,
+				01764EC62CD6B57700F64E85 /* Job.swift */,
 			);
 			path = MODEL;
+			sourceTree = "<group>";
+		};
+		01764EC52CD6A66800F64E85 /* VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				01764EB42CD5E8F900F64E85 /* ContentView.swift */,
+				01764EC32CD6A66400F64E85 /* UsersView.swift */,
+			);
+			path = VIEWS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +165,8 @@
 				01764EB52CD5E8F900F64E85 /* ContentView.swift in Sources */,
 				01764EB32CD5E8F900F64E85 /* WeDataApp.swift in Sources */,
 				01764EC12CD6984600F64E85 /* User.swift in Sources */,
+				01764EC42CD6A66400F64E85 /* UsersView.swift in Sources */,
+				01764EC72CD6B57700F64E85 /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
