@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EmojiRankView: View {
-    let rank: Int
+    let rank: Int?
 
     var body: some View {
         switch rank {
+        case nil:
+            Text("⏳")
         case 1:
             Text("🤮")
         case 2:

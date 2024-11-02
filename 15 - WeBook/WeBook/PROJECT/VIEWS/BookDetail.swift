@@ -18,30 +18,59 @@ struct BookDetail: View {
     
     var body: some View {
         ScrollView {
-            ZStack(alignment: .bottomTrailing) {
-                book.genre.image
-                    .resizable()
-                    .scaledToFit()
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    book.genre.image
+                        .resizable()
+                        .scaledToFit()
 
-                Text(book.genre.rawValue.uppercased())
-                    .font(.caption)
-                    .fontWeight(.black)
-                    .padding(8)
-                    .foregroundStyle(.white)
-                    .background(.black.opacity(0.75))
-                    .clipShape(.capsule)
-                    .offset(x: -5, y: -5)
+                    Text(book.genre.rawValue.uppercased())
+                        .font(.caption)
+                        .fontWeight(.black)
+                        .padding(8)
+                        .foregroundStyle(.white)
+                        .background(.black.opacity(0.75))
+                        .clipShape(.capsule)
+                        .offset(x: -5, y: -5)
+                }
             }
             
             Text(book.author)
-                .font(.title)
-                .foregroundStyle(.secondary)
-
-            Text(book.review)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundStyle(.primary)
                 .padding()
 
-            RatingView(rating: .constant(book.rating))
-                .font(.largeTitle)
+            if book.hasRead {
+                if let rating = book.rating {
+                    RatingView(rating: .constant(rating))
+                        .font(.largeTitle)
+                        .padding(.bottom, 0.5)
+                }
+
+                if let dateFinished = book.dateFinished {
+                    HStack {
+                        Text("Date Finished")
+                            .fontWeight(.medium)
+                        Text("\(dateFinished.formatted(date: .long, time: .omitted))")
+                    }
+                    .font(.subheadline)
+                    .padding(.bottom, 2.0)
+                }
+
+                if let review = book.review {
+                    Text(review)
+                        .padding(.bottom)
+                } else {
+                    Text("No review")
+                        .foregroundStyle(.secondary)
+                        .padding(.bottom)
+                }
+            } else {
+                Text("IN PROGRESS")
+                    .italic()
+                    .foregroundStyle(.secondary)
+            }
             
             Button {
                 showingDeleteAlert = true
@@ -50,8 +79,7 @@ struct BookDetail: View {
                     .foregroundStyle(.red)
                     .bold()
             }
-            .padding()
-
+            .padding(2.0)
         }
         .toolbar {
             Button("Delete this book", systemImage: "trash") {
@@ -60,7 +88,6 @@ struct BookDetail: View {
             .tint(.red)
         }
         .navigationTitle(book.title)
-        .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
         .alert("Delete book", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteBook)
@@ -82,7 +109,7 @@ struct BookDetail: View {
         let container = try ModelContainer(for: Book.self, configurations: config)
         
         return NavigationStack {
-            BookDetail(book: Book.testBook())
+            BookDetail(book: Book.testBookFinished())
                 .modelContainer(container)
         }
     } catch {

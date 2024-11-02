@@ -16,7 +16,9 @@ struct AddBookView: View {
     @State private var author: String = ""
     @State private var genre: Book.Genre = .fantasy
     @State private var review: String = ""
-    @State private var rating: Int = -2
+    @State private var rating: Int? = nil
+    @State private var hasRead: Bool = false
+    @State private var dateFinished: Date = .now
 
     // CONFIRMATION ALERT
     @State private var confirmMessage = ""
@@ -44,19 +46,32 @@ struct AddBookView: View {
                         }
                     }
                 }
-
-                Section("Rating") {
-                    RatingView(label: "Rating", rating: $rating)
+                
+                Section("Read") {
+                    Toggle("Finished Reading?", isOn: $hasRead)
                 }
 
-                Section("Review") {
-                    TextField("Review", text: $review, axis: .vertical)
+                if hasRead {
+                    Section("Date Finished") {
+                        DatePicker("Date Finished", selection: $dateFinished, in: Date.distantPast...Date.now, displayedComponents: [.date])
+                    }
+
+                    Section("Review") {
+                        RatingView(label: "Rating", rating: $rating)
+                        TextField("Review", text: $review, axis: .vertical)
+                    }
                 }
             }
             .navigationTitle("Add Book")
             .toolbar {
                 Button("Save") {
-                    let book = Book(title: title, author: author, genre: genre, review: review, rating: rating)
+                    let book: Book
+                    if hasRead {
+                        book = Book(title: title, author: author, genre: genre, dateFinished: dateFinished, rating: rating, review: review)
+                    } else {
+                        book = Book(title: title, author: author, genre: genre)
+                    }
+
                     if book.isValidBook {
                         modelContext.insert(book)
                         confirmMessage = "\(book.title) was added to your library."

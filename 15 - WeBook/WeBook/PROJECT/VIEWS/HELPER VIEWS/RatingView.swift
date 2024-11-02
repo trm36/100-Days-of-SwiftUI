@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingView: View {
 
     var label = ""
-    @Binding var rating: Int
+    @Binding var rating: Int?
 
     var maximumRating = 5
 
@@ -33,7 +33,7 @@ struct RatingView: View {
                     rating = i
                 } label: {
                     image(for: i)
-                        .foregroundStyle(i > rating ? offColor : onColor)
+                        .foregroundStyle(i > rating ?? 0 ? offColor : onColor)
                 }
                 .buttonStyle(.plain)
             }
@@ -42,7 +42,7 @@ struct RatingView: View {
     }
 
     private func image(for index: Int) -> Image {
-        if index > rating {
+        if index > rating ?? 0 {
             offImage ?? onImage
         } else {
             onImage
