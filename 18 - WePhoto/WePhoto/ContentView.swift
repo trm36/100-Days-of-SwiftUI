@@ -5,46 +5,98 @@
 //  Created by Taylor on 2024-11-04.
 //
 
+import CoreImage
+import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct ContentView: View {
-    @State private var blurAmount = 0.0
-    @State private var showingConfirmation = false
-    @State private var backgroundColor = Color.white
+    @State private var image: Image?
 
     var body: some View {
-        ZStack {
-            backgroundColor
-                .ignoresSafeArea()
+        VStack {
+            image?
+                .resizable()
+                .scaledToFit()
 
-            VStack {
-                Text("Hello, World!")
-                    .blur(radius: blurAmount)
-
-                Slider(value: $blurAmount, in: 0...20)
-                    .onChange(of: blurAmount) { (oldValue, newValue) in
-                        print("New value is \(newValue)")
-                    }
-
-                Button("Random Blur") {
-                    blurAmount = Double.random(in: 0...20)
+            ContentUnavailableView {
+                Label("No snippets", systemImage: "swift")
+            } description: {
+                Text("You don't have any saved snippets yet.")
+            } actions: {
+                Button("Create Snippet") {
+                    // create a snippet
                 }
-
-                Button("Show Confirmation Dialog") {
-                    showingConfirmation = true
-                }
-                .padding()
-                .confirmationDialog("Change background", isPresented: $showingConfirmation) {
-                    Button("Red") { backgroundColor = .red }
-                    Button("Green") { backgroundColor = .green }
-                    Button("Blue") { backgroundColor = .blue }
-                    Button("White") { backgroundColor = .white }
-                    Button("Cancel", role: .cancel) { }
-                } message: {
-                    Text("Select a new color")
-                }
+                .buttonStyle(.borderedProminent)
             }
         }
+        .onAppear(perform: loadImage)
+    }
+
+    func loadImage() {
+        let filter = Filter.twirl
+        let inputImage = UIImage(resource: .example)
+        let beginImage = CIImage(image: inputImage)
+
+        let context = CIContext()
+
+        switch filter {
+        case .sepia:
+            let currentFilter = CIFilter.sepiaTone()
+            currentFilter.inputImage = beginImage
+            currentFilter.intensity = 0.5
+
+            setImage(filter: currentFilter)
+        case .pixelate:
+            let currentFilter = CIFilter.pixellate()
+            currentFilter.inputImage = beginImage
+            currentFilter.scale = 100
+
+            setImage(filter: currentFilter)
+        case .twirlModern:
+            let currentFilter = CIFilter.twirlDistortion()
+            currentFilter.inputImage = beginImage
+            currentFilter.radius = 1000
+            currentFilter.center = CGPoint(x: inputImage.size.width / 2, y: inputImage.size.height / 2)
+
+            setImage(filter: currentFilter)
+
+        case .twirl:
+            let currentFilter = CIFilter.twirlDistortion()
+            currentFilter.inputImage = beginImage
+
+            let amount = 1.0
+
+            let inputKeys = currentFilter.inputKeys
+
+            if inputKeys.contains(kCIInputIntensityKey) {
+                currentFilter.setValue(amount, forKey: kCIInputIntensityKey)
+            }
+            
+            if inputKeys.contains(kCIInputRadiusKey) {
+                currentFilter.setValue(amount * 200, forKey: kCIInputRadiusKey)
+            }
+            
+            if inputKeys.contains(kCIInputScaleKey) {
+                currentFilter.setValue(amount * 10, forKey: kCIInputScaleKey)
+            }
+
+            setImage(filter: currentFilter)
+        }
+    }
+
+    func setImage(filter: CIFilter) {
+        let context = CIContext()
+        guard let outputImage = filter.outputImage else { return }
+        guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
+        let uiImage = UIImage(cgImage: cgImage)
+        image = Image(uiImage: uiImage)
+    }
+
+    enum Filter {
+        case sepia
+        case pixelate
+        case twirlModern
+        case twirl
     }
 }
 
