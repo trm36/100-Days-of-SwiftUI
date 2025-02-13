@@ -39,7 +39,7 @@ struct Location: Codable, Identifiable, Equatable {
     }
     
     init(from location: Location) {
-        self.id = UUID()
+        self.id = location.id
         self.name = location.name
         self.description = location.description
         self.latitude = location.latitude
