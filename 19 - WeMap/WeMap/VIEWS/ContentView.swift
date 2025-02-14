@@ -50,9 +50,10 @@ struct ContentView: View {
                         viewModel.addLocation(at: coordinate)
                     }
                     .sheet(item: $viewModel.selectedPlace) { place in
-                        EditAnnotationView(location: place) { newLocation in
+                        EditAnnotationView(onSave: { newLocation in
                             viewModel.updateLocation(location: newLocation)
-                        }
+                        })
+                        .environmentObject(EditAnnotationView.ViewModel(location: place))
                     }
 
                     VStack {
