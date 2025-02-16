@@ -62,8 +62,10 @@ struct QuestionView: View {
                                     .foregroundStyle(.secondary)
                                 Text(currentQuestion.correctAnswer.displayString.uppercased())
                                     .font(.largeTitle.weight(.heavy))
+                                    .accessibilityLabel(currentQuestion.correctAnswer.accessibilityString)
                             }
-                            
+                            .accessibilityElement(children: .combine)
+
                             ForEach(0..<3) { i in
                                 let country = currentQuestion.shuffledOptions[i]
                                 let isCorrectAnswer = country == currentQuestion.correctAnswer

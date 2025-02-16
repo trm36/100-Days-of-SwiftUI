@@ -48,6 +48,8 @@ struct ContentView: View {
                             Spacer()
                             Image(systemName: "\(word.count).circle.fill")
                         }
+                        .accessibilityElement()
+                        .accessibilityLabel("\(word), \(word.count) letters")
                     }
                 }
             }

@@ -81,6 +81,12 @@ struct ContentView: View {
                 print("Not handled.")
             }
         }
+
+        // >< VOICE INPUT
+        Button("John Fitzgerald Kennedy") {
+            print("Button tapped")
+        }
+        .accessibilityInputLabels(["John Fitzgerald Kennedy", "Kennedy", "JFK"])
     }
 }
 

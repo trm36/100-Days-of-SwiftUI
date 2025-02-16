@@ -44,6 +44,33 @@ class GameBrain {
             }
         }
 
+        var accessibilityString: String {
+            switch self {
+            case .uk:
+                return "the U K"
+            case .us:
+                return "the U S"
+            case .estonia, .france, .germany, .ireland, .italy, .nigeria, .poland, .spain, .ukraine:
+                return rawValue
+            }
+        }
+
+        var accessibilityDescription: String {
+            switch self {
+            case .estonia: "Flag with three horizontal stripes. Top stripe blue, middle stripe black, bottom stripe white."
+            case .france: "Flag with three vertical stripes. Left stripe blue, middle stripe white, right stripe red."
+            case .germany: "Flag with three horizontal stripes. Top stripe black, middle stripe red, bottom stripe gold."
+            case .ireland: "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe orange."
+            case .italy: "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe red."
+            case .nigeria: "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe green."
+            case .poland: "Flag with two horizontal stripes. Top stripe white, bottom stripe red."
+            case .spain: "Flag with three horizontal stripes. Top thin stripe red, middle thick stripe gold with a crest on the left, bottom thin stripe red."
+            case .uk: "Flag with overlapping red and white crosses, both straight and diagonally, on a blue background."
+            case .ukraine: "Flag with two horizontal stripes. Top stripe blue, bottom stripe yellow."
+            case .us: "Flag with many red and white stripes, with white stars on a blue background in the top-left corner."
+            }
+        }
+
         var image: Image {
             return Image(self.rawValue)
         }

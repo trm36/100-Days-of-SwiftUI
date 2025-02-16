@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingView: View {
 
     var label = ""
-    @Binding var rating: Int?
+    @Binding var rating: Int
 
     var maximumRating = 5
 
@@ -33,16 +33,29 @@ struct RatingView: View {
                     rating = i
                 } label: {
                     image(for: i)
-                        .foregroundStyle(i > rating ?? 0 ? offColor : onColor)
+                        .foregroundStyle(i > rating ? offColor : onColor)
                 }
                 .buttonStyle(.plain)
             }
-
+        }
+        .accessibilityElement()
+        .accessibilityLabel(label)
+        .accessibilityValue(rating == 1 ? "1 star" : "\(rating) stars")
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment:
+                if rating  < maximumRating { rating += 1 }
+            case .decrement:
+                if rating > 1 { rating -= 1 }
+            default:
+                // apple reserves right to add more directions in the future
+                break
+            }
         }
     }
 
     private func image(for index: Int) -> Image {
-        if index > rating ?? 0 {
+        if index > rating {
             offImage ?? onImage
         } else {
             onImage

@@ -16,7 +16,7 @@ struct AddBookView: View {
     @State private var author: String = ""
     @State private var genre: Book.Genre = .fantasy
     @State private var review: String = ""
-    @State private var rating: Int? = nil
+    @State private var rating: Int = 0
     @State private var hasRead: Bool = false
     @State private var dateFinished: Date = .now
 
