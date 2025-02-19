@@ -13,6 +13,13 @@ struct Person: Codable, Identifiable, Hashable, Comparable, Equatable {
     var image: Data
     var id: UUID
 
+    init(name: String, meetingNote: String, image: Data, id: UUID = UUID()) {
+        self.name = name
+        self.meetingNote = meetingNote
+        self.image = image
+        self.id = id
+    }
+
     static func <(lhs: Person, rhs: Person) -> Bool {
         return lhs.name < rhs.name
     }
