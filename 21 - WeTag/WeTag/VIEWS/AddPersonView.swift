@@ -28,7 +28,7 @@ struct AddPersonView: View {
                     Color.clear
                         .aspectRatio(1.0, contentMode: .fill)
                         .overlay(
-                            PhotosPicker(selection: $selectedItem) {
+                            PhotosPicker(selection: $selectedItem, matching: .images) {
                                 if let processedImage {
                                     processedImage
                                         .resizable()
@@ -49,6 +49,7 @@ struct AddPersonView: View {
                     }
                     .font(.title2)
                     .bold()
+
                     TextField(text: $meetingNote) {
                         Text("Meeting Note")
                     }

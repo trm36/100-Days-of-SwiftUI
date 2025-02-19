@@ -11,7 +11,7 @@ import SwiftUI
 struct WeTagApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PersonListView()
         }
     }
 }
