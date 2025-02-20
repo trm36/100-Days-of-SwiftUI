@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		014712C62D6671B5000580C0 /* TRMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014712C52D6671B5000580C0 /* TRMExtensions.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		019BEA972D624D4800ABA73D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014712C52D6671B5000580C0 /* TRMExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TRMExtensions.swift; path = "/Users/trm/Developer/MOTT APPLICATIONS/CODE/TRMExtensions.swift"; sourceTree = "<absolute>"; };
 		019BEA862D624D4700ABA73D /* WeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		019BEA962D624D4800ABA73D /* WeTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		019BEAA02D624D4900ABA73D /* WeTagUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeTagUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +84,7 @@
 				019BEA992D624D4800ABA73D /* WeTagTests */,
 				019BEAA32D624D4900ABA73D /* WeTagUITests */,
 				019BEA872D624D4700ABA73D /* Products */,
+				014712C52D6671B5000580C0 /* TRMExtensions.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014712C62D6671B5000580C0 /* TRMExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +406,7 @@
 				DEVELOPMENT_TEAM = B9KMJ3NRM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add your location to your photo tags.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +436,7 @@
 				DEVELOPMENT_TEAM = B9KMJ3NRM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add your location to your photo tags.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
