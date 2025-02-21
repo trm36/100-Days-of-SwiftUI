@@ -1,5 +1,5 @@
 //
-//  TabView.swift
+//  TabLessonView.swift
 //  WeProspect
 //
 //  Created by Taylor on 2025-02-20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabView: View {
+struct TabLessonView: View {
 
     @State private var selectedTab = "One"
 
@@ -31,5 +31,5 @@ struct TabView: View {
 }
 
 #Preview {
-    TabView()
+    TabLessonView()
 }
