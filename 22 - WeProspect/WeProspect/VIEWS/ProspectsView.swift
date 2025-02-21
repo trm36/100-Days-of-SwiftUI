@@ -8,6 +8,7 @@
 import CodeScanner
 import SwiftData
 import SwiftUI
+import UserNotifications
 
 struct ProspectsView: View {
     @Query(sort: \Prospect.name) var prospects: [Prospect]
@@ -58,6 +59,14 @@ struct ProspectsView: View {
                         .foregroundStyle(.secondary)
                 }
                 .tag(prospect)
+                .swipeActions(edge: .leading) {
+                    if !prospect.isContacted {
+                        Button("Remind Me", systemImage: "bell") {
+                            addNotification(for: prospect)
+                        }
+                        .tint(.orange)
+                    }
+                }
                 .swipeActions {
                     if prospect.isContacted {
                         Button("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark") {
@@ -118,6 +127,45 @@ struct ProspectsView: View {
             modelContext.insert(person)
         case .failure(let error):
             print("Scanning failed: \(error.localizedDescription)")
+        }
+    }
+
+    // MARK: - LOCAL NOTIFICATIONS
+    func addNotification(for prospect: Prospect) {
+        let center = UNUserNotificationCenter.current()
+
+        let addRequest = {
+            let content = UNMutableNotificationContent()
+            content.title = "Contact \(prospect.name)"
+            content.subtitle = prospect.emailAddress
+            content.sound = UNNotificationSound.default
+
+            var dateComponents = DateComponents()
+            dateComponents.hour = 9
+            // PRODUCTION TRIGGER
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+            // TESTING TRIGGER
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+        }
+
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            } else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        addRequest()
+                    } else if let error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("Unknown Error Occurred - Request Notification Authorization")
+                    }
+                }
+            }
         }
     }
 

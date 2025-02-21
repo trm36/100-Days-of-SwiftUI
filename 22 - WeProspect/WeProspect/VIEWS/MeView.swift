@@ -23,16 +23,21 @@ struct MeView: View {
                     
                     TextField("Email address", text: $emailAddress)
                         .textContentType(.emailAddress)
+                        .autocapitalization(.none)
                         .font(.title)
                         .frame(height: 50.0)
                 }
 
                 if !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !emailAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     Section {
-                        Image(uiImage: generateQRCode(from: "\(name)\n\(emailAddress)"))
+                        let qrCode = generateQRCode(from: "\(name)\n\(emailAddress)")
+                        Image(uiImage: qrCode)
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()
+                            .contextMenu {
+                                ShareLink(item: Image(uiImage: qrCode), preview: SharePreview("My QR Code", image: Image(uiImage: qrCode)))
+                            }
                     }
                 }
             }
