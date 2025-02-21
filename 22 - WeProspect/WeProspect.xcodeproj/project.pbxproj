@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		01C4C54B2D68348B00166ECD /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 01C4C54A2D68348B00166ECD /* SamplePackage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		01C3EFB42D67C7BB00E88896 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C4C54B2D68348B00166ECD /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = WeProspect;
 			packageProductDependencies = (
+				01C4C54A2D68348B00166ECD /* SamplePackage */,
 			);
 			productName = WeProspect;
 			productReference = 01C3EFA32D67C7BA00E88896 /* WeProspect.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 01C3EF9A2D67C7BA00E88896;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				01C4C5472D68341400166ECD /* XCRemoteSwiftPackageReference "SamplePackage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 01C3EFA42D67C7BA00E88896 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01C4C5472D68341400166ECD /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/SamplePackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01C4C54A2D68348B00166ECD /* SamplePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C4C5472D68341400166ECD /* XCRemoteSwiftPackageReference "SamplePackage" */;
+			productName = SamplePackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01C3EF9B2D67C7BA00E88896 /* Project object */;
 }
