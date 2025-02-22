@@ -11,13 +11,13 @@ import SwiftUI
 import UserNotifications
 
 struct ProspectsView: View {
-    @Query(sort: \Prospect.name) var prospects: [Prospect]
     @Environment(\.modelContext) var modelContext
 
-    @State private var selectedProspects = Set<Prospect>()
-    @State private var isShowingScanner = false
-
     let filter: FilterType
+
+    @State private var isShowingScanner = false
+    @State private var query: Query<Prospect, [Prospect]>
+    @State private var sortOrder: [SortDescriptor<Prospect>]
 
     var title: String {
         switch filter {
@@ -35,144 +35,97 @@ struct ProspectsView: View {
     init(filter: FilterType) {
         self.filter = filter
 
-        let sort = [SortDescriptor(\Prospect.name)]
+        let sortOrder = [SortDescriptor(\Prospect.name)]
+        self.sortOrder = sortOrder
 
         switch filter {
         case .none:
-            // default value set in @Query property
-            break
+            self.query = Query(sort: sortOrder)
         case .contacted:
-            _prospects = Query(filter: #Predicate { $0.isContacted }, sort: sort)
+            self.query = Query(filter: #Predicate { $0.dateContacted != nil }, sort: sortOrder)
         case .uncontacted:
-            _prospects = Query(filter: #Predicate { !$0.isContacted }, sort: sort)
+            self.query = Query(filter: #Predicate { $0.dateContacted == nil }, sort: sortOrder)
         }
     }
 
     // MARK: - BODY
     var body: some View {
         NavigationStack {
-            List(prospects, selection: $selectedProspects) { prospect in
-                VStack(alignment: .leading) {
-                    Text(prospect.name)
-                        .font(.headline)
-                    Text(prospect.emailAddress)
-                        .foregroundStyle(.secondary)
-                }
-                .tag(prospect)
-                .swipeActions(edge: .leading) {
-                    if !prospect.isContacted {
-                        Button("Remind Me", systemImage: "bell") {
-                            addNotification(for: prospect)
+            ProspectsList(prospectQuery: query, showsContactedIndicator: filter == .none)
+                .navigationTitle(title)
+                .toolbar {
+/*
+                    // ADDS DATA FOR EASY TESTING
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Download Data", systemImage: "arrowshape.down.circle") {
+                            Prospect.addTestProspects(to: modelContext)
                         }
-                        .tint(.orange)
                     }
-                }
-                .swipeActions {
-                    if prospect.isContacted {
-                        Button("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark") {
-                            prospect.isContacted.toggle()
-                        }
-                        .tint(.blue)
+*/
 
-                        Button("Delete", systemImage: "trash", role: .destructive) {
-                            modelContext.delete(prospect)
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                            Picker("Sort", selection: $sortOrder) {
+                                Text("Sort by Name")
+                                    .tag([
+                                        SortDescriptor(\Prospect.name),
+                                    ])
+                                Text("Sort by Email")
+                                    .tag([
+                                        SortDescriptor(\Prospect.emailAddress),
+                                    ])
+                                Text("Sort By Date Added")
+                                    .tag([
+                                        SortDescriptor(\Prospect.dateAdded, order: .reverse),
+                                    ])
+                                Text("Sort By Date Contacted")
+                                    .tag([
+                                        SortDescriptor(\Prospect.dateContacted, order: .reverse),
+                                    ])
+                            }
+                            .onChange(of: sortOrder, updateQuery)
                         }
-                    } else {
-                        Button("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark") {
-                            prospect.isContacted.toggle()
+                    }
+
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Scan", systemImage: "qrcode.viewfinder") {
+                            isShowingScanner = true
                         }
-                        .tint(.green)
-
-                        Button("Delete", systemImage: "trash", role: .destructive) {
-                            modelContext.delete(prospect)
+                        .sheet(isPresented: $isShowingScanner) {
+                            CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
                         }
                     }
                 }
-            }
-            .navigationTitle(title)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
-                }
-
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Scan", systemImage: "qrcode.viewfinder") {
-                        isShowingScanner = true
-                    }
-                    .sheet(isPresented: $isShowingScanner) {
-                        CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
-                    }
-                }
-
-                if !selectedProspects.isEmpty {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Delete Selected", action: delete)
-                    }
-                }
-            }
         }
     }
 
-    // MARK: - QR SCAN
+    // MARK: - QUERY
+    private func updateQuery() {
+        switch filter {
+        case .none:
+            query = Query(sort: sortOrder)
+        case .contacted:
+            query = Query(filter: #Predicate { $0.dateContacted != nil }, sort: sortOrder)
+        case .uncontacted:
+            query = Query(filter: #Predicate { $0.dateContacted == nil }, sort: sortOrder)
+        }
+    }
+
+    // MARK: - QR SCAN - ADD PROSPECT
     private func handleScan(result: Result<ScanResult, ScanError>) {
-       isShowingScanner = false
+        isShowingScanner = false
 
         switch result {
         case .success(let result):
             let details = result.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
+            let now = Date.now
 
-            let person = Prospect(name: details[0], emailAddress: details[1], isContacted: false)
+            let person = Prospect(name: details[0], emailAddress: details[1], dateAdded: now, dateUpdated: now)
 
             modelContext.insert(person)
         case .failure(let error):
             print("Scanning failed: \(error.localizedDescription)")
-        }
-    }
-
-    // MARK: - LOCAL NOTIFICATIONS
-    func addNotification(for prospect: Prospect) {
-        let center = UNUserNotificationCenter.current()
-
-        let addRequest = {
-            let content = UNMutableNotificationContent()
-            content.title = "Contact \(prospect.name)"
-            content.subtitle = prospect.emailAddress
-            content.sound = UNNotificationSound.default
-
-            var dateComponents = DateComponents()
-            dateComponents.hour = 9
-            // PRODUCTION TRIGGER
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-
-            // TESTING TRIGGER
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            center.add(request)
-        }
-
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                addRequest()
-            } else {
-                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                    if success {
-                        addRequest()
-                    } else if let error {
-                        print(error.localizedDescription)
-                    } else {
-                        print("Unknown Error Occurred - Request Notification Authorization")
-                    }
-                }
-            }
-        }
-    }
-
-    // MARK: - MULTI DELETE
-    private func delete() {
-        for prospect in selectedProspects {
-            modelContext.delete(prospect)
         }
     }
 
@@ -183,6 +136,11 @@ struct ProspectsView: View {
 }
 
 #Preview {
-    ProspectsView(filter: .none)
-        .modelContainer(for: Prospect.self)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Prospect.self, configurations: config)
+
+    Prospect.addTestProspects(to: container.mainContext)
+
+    return ProspectsView(filter: .none)
+        .modelContainer(container)
 }
