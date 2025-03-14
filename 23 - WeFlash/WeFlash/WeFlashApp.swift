@@ -11,7 +11,7 @@ import SwiftUI
 struct WeFlashApp: App {
     var body: some Scene {
         WindowGroup {
-            GestureView()
+            ContentView()
         }
     }
 }
