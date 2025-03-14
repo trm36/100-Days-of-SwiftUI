@@ -1,5 +1,5 @@
 //
-//  LessonView.swift
+//  GestureView.swift
 //  WeFlash
 //
 //  Created by Taylor on 2025-02-23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//struct LessonView: View {
+//struct GestureView: View {
 //    @State private var currentAmount = 0.0
 //    @State private var finalAmount = 1.0
 //
@@ -27,7 +27,7 @@ import SwiftUI
 //    }
 //}
 
-//struct LessonView: View {
+//struct GestureView: View {
 //    @State private var currentAmount = Angle.zero
 //    @State private var finalAmount = Angle.zero
 //
@@ -49,7 +49,7 @@ import SwiftUI
 //    }
 //}
 
-//struct LessonView: View {
+//struct GestureView: View {
 //    var body: some View {
 //        VStack {
 //            Text("Hello, World!")
@@ -72,7 +72,7 @@ import SwiftUI
 //    }
 //}
 
-//struct LessonView: View {
+//struct GestureView: View {
 //    // how far the circle has been dragged
 //    @State private var offset = CGSize.zero
 //
@@ -111,10 +111,10 @@ import SwiftUI
 //    }
 //}
 
-struct LessonView: View {
+struct GestureView: View {
     var body: some View {
         Spacer()
-        
+
         ZStack {
             Rectangle()
                 .fill(.blue)
@@ -149,5 +149,5 @@ struct LessonView: View {
 }
 
 #Preview {
-    LessonView()
+    GestureView()
 }
