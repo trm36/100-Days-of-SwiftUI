@@ -36,9 +36,13 @@ struct ContentView: View {
 
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
-                            withAnimation {
-                                removeCard(at: index)
+                        CardView(card: cards[index]) { correct in
+                            if correct {
+                                withAnimation {
+                                    removeCard(at: index)
+                                }
+                            } else {
+                                moveCard(at: index)
                             }
                         }
                         .stacked(at: index, in: cards.count)
@@ -136,12 +140,20 @@ struct ContentView: View {
     private func removeCard(at index: Int) {
         guard index >= 0 else { return }
         cards.remove(at: index)
-
+        
         if cards.isEmpty {
             isActive = false
         }
     }
-
+    
+    private func moveCard(at index: Int) {
+        guard index >= 0 else { return }
+        let card = cards.remove(at: index)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.cards.insert(card, at: 0)
+        }
+    }
+    
     private func resetCards() {
         timeRemaining = 100
         isActive = true
